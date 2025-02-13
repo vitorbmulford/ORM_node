@@ -1,5 +1,5 @@
 const Controller = require("./Controller.js");
-const CursoServices = require("../services/PessoaServices.js");
+const CursoServices = require("../services/CursoServices.js");
 
 const cursoServices = new CursoServices();
 

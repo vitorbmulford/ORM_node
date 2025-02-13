@@ -1,5 +1,5 @@
 const Controller = require("./Controller.js");
-const MatriculaServices = require("../services/PessoaServices.js");
+const MatriculaServices = require("../services/MatriculaServices.js");
 
 const matriculaServices = new MatriculaServices();
 
