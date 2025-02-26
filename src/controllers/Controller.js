@@ -1,4 +1,3 @@
-
 class Controller {
   constructor(entidadeService) {
     this.entidadeService = entidadeService;
@@ -9,7 +8,7 @@ class Controller {
       const listaDeRegistros = await this.entidadeService.getAllRegister();
       return res.status(200).json(listaDeRegistros);
     } catch (erro) {
-      res.status(500).json({ erro: "Erro interno do servidor" });
+      res.status(500).json({ erro: erro.message });
     }
   }
   async pegaUmPorId(req, res) {
@@ -23,8 +22,8 @@ class Controller {
         return res.status(400).json({ mensagem: "Id não encontrado" });
       }
       return res.status(200).json(umRegistro);
-    } catch {
-      res.status(500).json({ erro: "Erro interno do servidor" });
+    } catch (erro) {
+      res.status(500).json({ erro: erro.message });
     }
   }
   async criaNovo(req, res) {
@@ -38,11 +37,10 @@ class Controller {
         return res.status(400).json({ mensagem: "Erro ao criar" });
       }
 
-      return res.status(201).json(novoRegistroCriado); 
-      
-    } catch (error) {
+      return res.status(201).json(novoRegistroCriado);
+    } catch (erro) {
       console.error("Erro ao criar registro:", error);
-      res.status(500).json({ erro: "Erro interno do servidor" });
+      res.status(500).json({ erro: erro.message });
     }
   }
 
@@ -62,7 +60,7 @@ class Controller {
       return res.status(200).json({ mensagem: "Atualizado com sucesso" });
     } catch (erro) {
       console.error("Erro ao atualizar registro:", erro);
-      res.status(500).json({ erro: "Erro interno do servidor" });
+      res.status(500).json({ erro: erro.message });
     }
   }
   async exclui(req, res) {
@@ -72,8 +70,8 @@ class Controller {
       return res
         .status(200)
         .json({ mensagem: `Id ${id} deletado com sucesso` });
-    } catch {
-      res.status(500).json({ erro: "Erro interno do servidor" });
+    } catch (erro) {
+      res.status(500).json({ erro: erro.message });
     }
   }
 }
