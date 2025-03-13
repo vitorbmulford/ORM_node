@@ -39,7 +39,7 @@ class Controller {
 
       return res.status(201).json(novoRegistroCriado);
     } catch (erro) {
-      console.error("Erro ao criar registro:", error);
+      console.error("Erro ao criar registro:", erro);
       res.status(500).json({ erro: erro.message });
     }
   }
